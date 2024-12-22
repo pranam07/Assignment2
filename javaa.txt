@@ -1,0 +1,28 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("registrationForm");
+    const result = document.getElementById("result");
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent default form submission
+
+        // Collect form data
+        const formData = new FormData(form);
+        const userData = {};
+        formData.forEach((value, key) => {
+            userData[key] = value;
+        });
+
+        // Display the result
+        result.innerHTML = `
+            <h2>Registration Successful</h2>
+            <p><strong>Name:</strong> ${userData.name}</p>
+            <p><strong>Email:</strong> ${userData.email}</p>
+            <p><strong>Phone:</strong> ${userData.phone}</p>
+            <p><strong>Gender:</strong> ${userData.gender}</p>
+            <p><strong>Address:</strong> ${userData.address}</p>
+        `;
+
+        // Reset the form
+        form.reset();
+    });
+});
